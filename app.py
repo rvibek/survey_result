@@ -27,7 +27,7 @@ def load_data2():
 
 
 st.title('RSD Website Survey Analysis')
-st.header('Analysis of RSD website usability survey conudcted on February 2021')
+st.header('Analysis of RSD website usability survey conducted in February 2021')
 # st.write('/$color{#FFCC00}{your-text-here}$')
 
 data_load_state = st.text('Loading data...')
@@ -45,12 +45,12 @@ duplicated_count = len(data) - len(final_data)
 final_respondents = len(final_data)
 
 
-st.write("Initially, there were %d respondents who participated in the survey but %d participated responded more than once. \
-    Hence the analysis will only consider %d respondents." %(len(data), duplicated_count, final_respondents) )
+st.write("Initially, there were %d respondents, who participated in the survey, but %d respondents participated more than once. \
+Hence, the analysis will only consider %d respondents." % (len(data), duplicated_count, final_respondents))
 # st.write(len(data))
 
 st.markdown('---')
-st.subheader('Average Time Taken to complete the survery')
+st.subheader('Average time taken to complete the survery')
 seconds = final_data.time_taken.median().total_seconds()
 minutes = (seconds % 3600) // 60
 seconds = seconds % 60
@@ -75,7 +75,7 @@ fig.update_xaxes(title_text='Date')
 fig.update_yaxes(title_text='Respondents')
 st.write(fig)
 
-st.write('From 1:00 AM to 7:00 AM was relatively idle hour with an average of 18 respondents otherwise the average response rate was 51 users per hour. ')
+st.write('From 1:00 AM to 7:00 AM was relatively idle with an average of 18 respondents; otherwise the average response rate was 51 users per hour.')
 submission = final_data.groupby([final_data._submission_time.dt.hour])._id.count()
 fig = px.bar(x=submission.index, y=submission.values, template=template)
 fig.update_xaxes(title_text='Hour')
@@ -86,7 +86,7 @@ st.write(fig)
 
 st.markdown('---')
 st.subheader('How did you find the RSD website')
-st.markdown('Most of the user either assessed RSD website thorugh Google (and other search engine) or typed the URL directly. Around 9 per cent landed on RSD website through social media like Facebook, Twitter or Instagram.')
+st.markdown('Most of the users either accessed the RSD website through Google (and other search engines) or typed the URL directly. Around 9 per cent of the respondents landed on the RSD website through social media like Facebook, Twitter or Instagram.')
 
 def coo_graph(coo):
     if coo == 'All the countries':
@@ -133,8 +133,8 @@ st.write(fig)
 
 
 st.markdown('---')
-st.subheader('What is your preferred language of commuication?')
-st.markdown('**Arabic** is the most preferred language of communication among Eritrean, Iraqi, South Sudanese, Sudanese, Syrian and Yemeni. 30 per cent of the respondents\' preferred Somali, Tigrinya, Oromo, Amharic and other as a language of communication. Majority of these respondents were Eritrean, Ethiopian and Somali')
+st.subheader('What is your preferred language of communication?')
+st.markdown('Arabic is the most preferred language of communication among the Eritrean, Iraqi, South Sudanese, Sudanese, Syrian and Yemeni respondents. 30 per cent of the respondents preferred Somali, Tigrinya, Oromo, Amharic and other as the language of communication. Majority of these respondents were Eritreans, Ethiopians and Somalis.')
 
 def lng_graph(coo):
     if coo == 'All the countries':
@@ -157,7 +157,7 @@ lng_graph(lng_to_filter)
 
 st.markdown('---')
 st.subheader('How easy is RSD website to use? ')
-st.markdown("Most the respondents find RSD site Very Easy or Easy to use. The reponse remains same among all the age groups.")
+st.markdown("Most respondents find RSD site Very Easy or Easy to use. The reponse remains same among all the age groups.")
 def easy_graph(age):
     if age == 'All age groups':
         fig = px.histogram(final_data,x='how easy is our website to use?', histfunc="sum", template=template, color='how easy is our website to use?', category_orders={'how easy is our website to use?':['Very easy', 'Easy', 'Neither easy nor difficult', 'Difficult', 'Very difficult']})
@@ -220,7 +220,7 @@ education_to_filter = st.selectbox('Select education group to find out how often
 visit_graph(education_to_filter)
 
 
-st.markdown('21 per cent of the total respondents had visited the site the **first time**. Most of these respondents were from Sudan, Syria and South Sudan.')
+st.markdown('21 per cent of the total respondents had visited the site for the first time. Most of these respondents were from Sudan, Syria and South Sudan.')
 def visit_coo_graph(coo):
     if coo == 'All the countries':
         fig = px.histogram(final_data,x='how often do you use our website?', histfunc="sum", template=template, color='how often do you use our website?', category_orders={'how often do you use our website?':['Often (daily)', 'Regularly (weekly)', 'Sometimes (monthly)', 'Rarely (every few months)', 'This is the first time']})
@@ -242,12 +242,12 @@ visit_coo_graph(visit_coo_to_filter)
 
 
 st.markdown('---')
-st.subheader("Is there anything you would change or remove to make the help website easier to use and/or is anything missing, perhaps a topic you would like to know more about?")
+st.subheader("Is there anything you would change or remove to make the website easier to use and/or is anything missing, perhaps a topic you would like to know more about?")
 st.markdown('')
 piedata = data2[data2.question == "Is there anything you would change or remove to make the help website easier to use and/or is anything missing, perhaps a topic you would like to know more about?"]
 fig = px.pie(piedata, names='response', values='count', template=template)
 st.write(fig)
-st.markdown("Answering to **specific suggestions related to RSD**, respondants suggested following (listed according to popularity of the reply/topic.")
+st.markdown("Answering to specific suggestions related to RSD, respondents suggested the following (listed according to popularity of the reply/topic):")
 st.markdown("* Add the RSD result of First Instance and Appeal")
 st.markdown("* Add a live chat box for applicants to be able to communicate with staff / add an interactive section like Facebook comments to the website")
 st.markdown("* Update the RSD website on a regular basis and include most recent information relating to refugees and asylum-seekers")
@@ -264,7 +264,7 @@ st.markdown("* Change the font, colors and front page of the RSD website")
 
 st.markdown('---')
 st.subheader('Do you have your own smartphone')
-st.markdown('Majority of the respondents had their own smartphones - mostly Android. 90 per cent either owned smartphone or shared smartphone with their family or frineds. 10 per cent of the respondents do not have their own smartphone. ')
+st.markdown('Majority of the respondents had their own smartphones - mostly Android. 90 per cent either owned smartphone or shared smartphone with their family or friends. 10 per cent of the respondents do not have their own smartphone. ')
 def coo_smart_graph(coo):
     if coo == 'All the countries':
         piegraph_data = final_data.groupby('do you have your own smartphone?')['_id'].count()
@@ -300,12 +300,16 @@ piedata = data2[data2.question ==
                 "What UNHCR services would you like to be able to access digitally / online?"]
 fig = px.pie(piedata, names='response', values='count', template=template)
 st.write(fig)
-st.markdown("19.4 per cent of repondants who mentioned RSD further noted that they would like to access **RSD result**, **Inquire about RSD status / case status**, **RSD interview date** and **To process reopening via the website**")
+st.markdown("19.4 per cent of respondents who mentioned RSD further noted that they would like to:") 
+st.markdown("* Access RSD result")
+st.markdown("* Inquire about RSD status / case status")
+st.markdown("* RSD interview date")
+st.markdown("* Process reopening via the website")
 
 
 st.markdown('---')
 st.subheader('Do you use any online services')
-st.markdown('On an average only 11 to 12 per cent of the repondants used other online services from other organisations.')
+st.markdown('On an average only 11 to 12 per cent of the respondents used other online services from other organisations.')
 
 
 def coo_smart_graph(coo):
@@ -339,7 +343,10 @@ fig = px.bar(bardata, x="response", y="count", template=template)
 fig.update_xaxes(title_text="Response")
 fig.update_yaxes(title_text="Respondants")
 st.write(fig)
-st.write("Most of respondants said they were fine sharing personal information. The who raised their concern noted **Data is not safe on the internet**,**Data will be shared with a third party provider without the Applicant's consent** and **Data will be shared with the government (of Egypt and/or of the POCs' government)**")
+st.write("Most respondents said they were fine with sharing personal information. Those who raised their concern mentioned that:")
+st.markdown("* Data is not safe on the internet")
+st.markdown("* Data will be shared with a third party provider without the Applicant's consent")
+st.markdown("* Data will be shared with the government (of Egypt and/or of the POCs' government)")
 
 
 st.subheader("Do you find these services easy to use? Please explain.")
@@ -350,7 +357,12 @@ fig = px.bar(bardata, x="response", y="count", template=template)
 fig.update_xaxes(title_text="Response")
 fig.update_yaxes(title_text="Respondants")
 st.write(fig)
-st.markdown("Respondants who answered No also added **Lack of education including inability to read/ write and/or use technology hinders access**, **Not easy for older individuals with less technological awareness**, **No access to internet/smart phone **, **Afraid of being hacked / internet usage for personal information ** and **There is a language barrier** as their pressing concerns")
+st.markdown("Respondants who answered **No** also added following concerns:") 
+st.markdown("* Lack of education including inability to read/ write and/or use technology hinders access")
+st.markdown("* Not easy for older individuals with less technological awareness")
+st.markdown("* No access to internet/smart phone")
+st.markdown("* Afraid of being hacked / internet usage for personal information")
+st.markdown("* There is a language barrier") 
 
 st.markdown("---")
 st.subheader("Can we contact you again?")
@@ -376,3 +388,4 @@ sort_online_coo = sort_country
 online_coo_to_filter = st.selectbox(
     'Select nationality to find out whether they would like get contacted in the future', sort_online_coo)
 coo_smart_graph(online_coo_to_filter)
+st.markdown("---")
